@@ -4,6 +4,10 @@ FROM eclipse-temurin:17-jdk-jammy
 # Set the working directory inside the container
 WORKDIR /app
 
+# Copy the Maven Wrapper files
+COPY mvnw .
+COPY .mvn .mvn
+
 # Copy the Maven project files
 COPY pom.xml .
 COPY src ./src
@@ -12,4 +16,4 @@ COPY src ./src
 RUN ./mvnw clean package -DskipTests
 
 # Run the application
-CMD ["java", "-jar", "target/demo-0.0.1-SNAPSHOT.jar"]
+CMD ["java", "-jar", "target/demo2-0.0.1-SNAPSHOT.jar"]
